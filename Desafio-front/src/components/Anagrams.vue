@@ -1,11 +1,11 @@
 <template>
     <div>
       <h2 class="subtitle">Histórico:</h2>
-      <table class="table-align">
+      <table class="table-align table is-bordered is-striped is-narrow is-hoverable">
         <thead>
           <tr>
-            <th>Anagrama 1</th>
-            <th>Anagrama 2</th>
+            <th>Palavra 1</th>
+            <th>Palavra 2</th>
             <th>É anagrama?</th>
             <th colspan="1"></th>
           </tr>
@@ -15,11 +15,11 @@
             <td>{{ anagram.word1 }}</td>
             <td>{{ anagram.word1 }}</td>
             <td>{{ anagram.result }}</td>
-            <td><button type="button" v-on:click="removeAnagram(anagram)" >Remover</button></td>
+            <td><button type="button" class="delete is-danger" v-on:click="removeAnagram(anagram)" >Remover</button></td>
           </tr>
         </tbody>
       </table>
-      <router-link to="/new"><button type="button">Cadastrar Anagrama</button></router-link>
+      <router-link to="/new"><button type="button" class="button is-light">Cadastrar Anagrama</button></router-link>
     </div>
 </template>
 

@@ -1,20 +1,20 @@
 <template>
-  <div>
+  <div class="container">
     <h2 class="subtitle">Cadastro</h2>
-    <form @submit="formSubmit">
-      <p v-if="errors.length">
-        <b>Por favor, corrija o(s) seguinte(s) erro(s):</b>
-        <ul>
-            <li>{{ errors }}</li>
-        </ul>
-      </p>
-      <label>Palavra 1:</label>
-      <input type="text" class="form-control" v-model="word1" />
-      <label>Palavra 2:</label>
-      <input type="text" class="form-control" v-model="word2" />
-      <button class="btn btn-success">Salvar</button>
-    </form>
-      <table class="table-align" v-if="saved">
+      <form @submit="formSubmit">
+        <p v-if="errors.length">
+          <b>Por favor, corrija o(s) seguinte(s) erro(s):</b>
+          <ul>
+              <li>{{ errors }}</li>
+          </ul>
+        </p>
+        <label>Palavra 1:</label>
+        <input type="text" v-model="word1" />
+        <label>Palavra 2:</label>
+        <input type="text" v-model="word2" />
+        <button class="button is-success is-small">Salvar</button>
+      </form>
+      <table class="align table" v-if="saved">
         <thead>
           <tr>
             <th colspan="1"></th>
@@ -32,7 +32,7 @@
           </tr>
         </tbody>
       </table>
-    <router-link to="/"><button type="button">Voltar</button></router-link>
+    <router-link to="/"><button type="button" class="button is-light">Voltar</button></router-link>
   </div>
 </template>
 
@@ -87,7 +87,7 @@ export default {
 </script>
 
 <style scoped>
-.table-align{
-    margin-left: 35%;
+.align{
+    margin-left: 30%;
 }
 </style>
