@@ -1,0 +1,60 @@
+<template>
+    <div>
+      <h2 class="subtitle">Histórico:</h2>
+      <table class="table-align">
+        <thead>
+          <tr>
+            <th>Anagrama 1</th>
+            <th>Anagrama 2</th>
+            <th>É anagrama?</th>
+            <th colspan="1"></th>
+          </tr>
+        </thead>
+        <tbody v-for="anagram in anagrams" :key="anagram.id">
+          <tr>
+            <td>{{ anagram.word1 }}</td>
+            <td>{{ anagram.word1 }}</td>
+            <td>{{ anagram.result }}</td>
+            <td><button type="button" v-on:click="removeAnagram(anagram)" >Remover</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <router-link to="/new"><button type="button">Cadastrar Anagrama</button></router-link>
+    </div>
+</template>
+
+<script>
+
+export default {
+  data () {
+    return {
+      anagrams: []
+    }
+  },
+  mounted: function () {
+    this.axios.get('http://localhost:3000/anagrams')
+      .then(response => {
+        this.anagrams = response.data
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  },
+  methods: {
+    removeAnagram (anagram) {
+      this.axios.delete(`http://localhost:3000/anagrams/${anagram.id}`)
+        .then(response => {
+          this.anagrams.splice(this.anagrams.indexOf(anagram), 1)
+        })
+        .catch(error => this.setError(error))
+    }
+  }
+
+}
+</script>
+
+<style scoped>
+.table-align{
+    margin-left: 40%;
+}
+</style>
