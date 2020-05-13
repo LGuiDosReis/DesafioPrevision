@@ -14,7 +14,7 @@
         <input type="text" v-model="word2" />
         <button class="button is-success is-small">Salvar</button>
       </form>
-      <table class="align table" v-if="saved">
+      <table class="align table">
         <thead>
           <tr>
             <th colspan="1"></th>
@@ -45,7 +45,8 @@ export default {
     return {
       errors: [],
       word1: '',
-      word2: ''
+      word2: '',
+      saved: ''
     }
   },
   methods: {
@@ -60,7 +61,7 @@ export default {
       e.preventDefault()
       let currentObj = this
       this.axios
-        .post('http://localhost:3000/anagrams', {
+        .post('http://localhost:5000/anagrams', {
           word1: this.word1,
           word2: this.word2
         })
@@ -72,7 +73,7 @@ export default {
         })
     },
     getAnagrams: function () {
-      this.axios.get('http://localhost:3000/anagrams')
+      this.axios.get('http://localhost:5000/anagrams')
         .then(function (response) {
           console.log(response)
           console.log(response.data.results)

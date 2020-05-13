@@ -32,7 +32,7 @@ export default {
     }
   },
   mounted: function () {
-    this.axios.get('http://localhost:3000/anagrams')
+    this.axios.get('http://localhost:5000/anagrams')
       .then(response => {
         this.anagrams = response.data
       })
@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     removeAnagram (anagram) {
-      this.axios.delete(`http://localhost:3000/anagrams/${anagram.id}`)
+      this.axios.delete(`http://localhost:5000/anagrams/${anagram.id}`)
         .then(response => {
           this.anagrams.splice(this.anagrams.indexOf(anagram), 1)
         })
